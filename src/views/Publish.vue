@@ -18,7 +18,7 @@
 
 <script>
 import LoveHeader from '@/components/common/LoveHeader.vue'
-// import BMap from 'BMap'
+import BMap from 'BMap'
 export default {
   name: 'publish',
   components: {
@@ -44,27 +44,27 @@ export default {
       this.loveContent = resData.data.loveContent
       this.id = resData.data.id
     })
-    // var that = this
-    // var geolocation = new BMap.Geolocation()
-    // // 浏览器定位
-    // geolocation.getCurrentPosition(function (r) {
-    //   console.log('r:', r)
-    //   if (r) {
-    //     that.longitude = r.point.lng
-    //     that.latitude = r.point.lat
-    //     that.address = r.address.province + r.address.city + r.address.district + r.address.street
-    //     console.log('that.latitude', that.latitude)
-    //   } else {
-    //     // ip定位
-    //     var myCity = new BMap.LocalCity()
-    //     myCity.get((result) => {
-    //       that.longitude = result.center.lng || ''
-    //       that.latitude = result.center.lat || ''
-    //       that.address = result.name
-    //       console.log('result:', result)
-    //     })
-    //   }
-    // })
+    var that = this
+    var geolocation = new BMap.Geolocation()
+    // 浏览器定位
+    geolocation.getCurrentPosition(function (r) {
+      console.log('r:', r)
+      if (r) {
+        that.longitude = r.point.lng
+        that.latitude = r.point.lat
+        that.address = r.address.province + r.address.city + r.address.district + r.address.street
+        console.log('that.latitude', that.latitude)
+      } else {
+        // ip定位
+        var myCity = new BMap.LocalCity()
+        myCity.get((result) => {
+          that.longitude = result.center.lng || ''
+          that.latitude = result.center.lat || ''
+          that.address = result.name
+          console.log('result:', result)
+        })
+      }
+    })
   },
   methods: {
     toBackPage () {

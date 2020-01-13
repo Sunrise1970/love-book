@@ -58,7 +58,7 @@
           区块id{{item.blockId}}<br />
           内容{{item.loveContent}}<br /> -->
         </div>
-        <div class="no-data" v-show="dataList.length === 0">暂无相关数据 ～</div>
+        <div class="no-data" v-show="!loading && dataList.length === 0">暂无相关数据 ～</div>
       </cube-scroll>
     </div>
     <tabs></tabs>
@@ -85,7 +85,8 @@ export default {
       longitude: '',
       latitude: '',
       showSearch: false,
-      showSearchWrap: true
+      showSearchWrap: true,
+      loading: true
     }
   },
   // watch: {
@@ -189,6 +190,7 @@ export default {
     },
     // 初始化数据
     initData (type) {
+      this.loading = true
       this.$axios.post('/love-around/love/query-nearby', {
         'page': this.page,
         'rows': this.pageSize,
@@ -200,6 +202,7 @@ export default {
         'distance': '' // 待处理
       })
         .then(resData => {
+          this.loading = false
           if (type === 'init') {
             this.dataList = resData.rows
             this.$refs.scroll.scrollTo(0, 0, 0)
