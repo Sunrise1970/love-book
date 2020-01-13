@@ -1,7 +1,7 @@
 <template>
   <div class="love-page pb-50">
-    <love-header title="私信" :needBack="false"></love-header>
-    <div class="letter-list">
+    <love-header :title="title"></love-header>
+    <div class="chart-list">
       <cube-scroll
         ref="scroll"
         :options="options"
@@ -9,41 +9,39 @@
         @pulling-up="onPullingUp">
         <div
           :key="key" v-for="(item, key) in dataList"
-          @click="toChart(item.userId, item.nickName)">
-          <div class="letter-item">
+          @click="toLetter(item.userId)">
+          <div class="letter-item-left">
             <div class="flex-row">
               <div class="letter-img"></div>
-              <div class="span1 border-b">
-                <div class="flex-row row-space-between">
-                  <span class="letter-title ellipse">{{item.nickName}}{{item.nickName}}{{item.nickName}}{{item.nickName}}{{item.nickName}}</span>
-                  <span class="letter-date">20:23</span>
-                </div>
-                <p class="letter-info ellipse2">{{item.loveContent}}</p>
-              </div>
+              <div class="chart-content-left">由各种物质组成的物质组物质组成的物质组成的成的由各种物质组成的物质组物质组成的物质组成的成的</div>
+            </div>
+          </div>
+          <div class="letter-item-right">
+            <div class="flex-row row-right-top">
+              <div class="chart-content-right">由各种物质组成的物质组物质组成的物质组成的成的由各种物质组成的物质组物质组成的物质组成的成的</div>
+              <div class="letter-img"></div>
             </div>
           </div>
         </div>
       </cube-scroll>
     </div>
-    <tabs></tabs>
   </div>
 </template>
 
 <script>
-import tabs from '@/components/common/LoveTabs.vue'
 import LoveHeader from '@/components/common/LoveHeader.vue'
 import { mapGetters } from 'vuex'
 export default {
   name: 'Letter',
   components: {
-    LoveHeader,
-    tabs
+    LoveHeader
   },
   data () {
     return {
-      dataList: [],
+      dataList: [1],
       page: 1,
-      pageSize: 30
+      pageSize: 30,
+      title: ''
     }
   },
   computed: {
@@ -73,15 +71,15 @@ export default {
   },
   activated () {},
   mounted () {
-    this.initData('init')
+    this.title = this.$route.query.nickName
+    // this.initData('init')
   },
   methods: {
-    toChart (userId, nickName) {
+    toLetter (userId) {
       this.$router.push({
-        name: 'Chart',
+        name: 'Letter',
         query: {
-          userId: userId,
-          nickName: nickName
+          userId: userId
         }
       })
     },
@@ -137,23 +135,23 @@ export default {
 }
 </script>
 <style lang="stylus" scoped>
-.letter-list
+.chart-list
   position: absolute;
   top: 50px;
   left: 0;
   right: 0;
-  bottom: 50px;
+  bottom: 0;
   transform: rotate(0deg) // fix 子元素超出边框圆角部分不隐藏的问题
   overflow-y: hidden
-.letter-item
-  text-align left
-  margin-left 16px
-  margin-right 16px
-  padding-top 21px
+.letter-item-left,.letter-item-right
+  padding-top 24px
+  padding-left 16px
+  padding-right 16px
 .letter-img
   display inline-block
   width:44px;
   height:44px;
+  margin-left 12px
   margin-right 12px
   background:rgba(229,229,229,1);
   border-radius:50%;
@@ -170,4 +168,45 @@ export default {
   width 200px
   color rgba(20, 20, 20, 1)
   font-size 16px
+.chart-content-left
+  position relative
+  width 250px
+  padding 13px 11px
+  border 1px solid rgba(229, 229, 229, 1)
+  border-radius:4px;
+  color rgba(20, 20, 20, 1)
+  font-size 14px
+  line-height 160%
+  &:before
+    position absolute
+    top 14px
+    left -6px
+    content ''
+    width: 10px;
+    height: 10px;
+    border-left 1px solid rgba(229, 229, 229, 1)
+    border-top 1px solid rgba(229, 229, 229, 1)
+    transform rotate(-45deg)
+    background-color #ffffff
+.chart-content-right
+  width 250px
+  padding 13px 11px
+  border-radius:4px;
+  font-size 14px
+  line-height 160%
+  position relative
+  background-color rgba(121, 183, 144, 1)
+  color rgba(255, 255, 255, 1)
+  font-size 14px
+  line-height 160%
+  &:before
+    position absolute
+    top 14px
+    right -8px
+    content ''
+    width:0;
+    height:0;
+    border-width: 8px 0 8px 8px;
+    border-style:solid;
+    border-color:transparent transparent transparent rgba(121, 183, 144, 1);
 </style>
