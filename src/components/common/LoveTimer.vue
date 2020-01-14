@@ -57,8 +57,6 @@ export default {
             this.textNum++
           }
           clearInterval(this.st)
-          console.log('this.textNum', this.textNum)
-          console.log('this.codeType', this.codeType)
         }
       }, 1000)
     },

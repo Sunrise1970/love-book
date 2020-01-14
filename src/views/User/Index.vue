@@ -89,11 +89,7 @@ export default {
   mounted () {
     this.$axios.get('/love-around/user/query-self')
       .then((res) => {
-        console.log('res', res)
         this.userInfo = res.data
-      })
-      .catch((error) => {
-        console.log('error', error)
       })
     this.initData('init')
   },

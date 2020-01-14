@@ -46,9 +46,6 @@ export default {
             name: 'RegisterStep3'
           })
         })
-        .catch((error) => {
-          console.log('error', error)
-        })
     },
     changeValue () {
       // 创建和改变日期

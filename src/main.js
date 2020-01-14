@@ -61,7 +61,6 @@ fetch.interceptors.request.use(
 fetch.interceptors.response.use(
   response => {
     loading && loading.hide()
-    // console.log('response', response.data)
     // 错误处理
     if (response.data.retCode !== '000000') {
       // token失效或不存在

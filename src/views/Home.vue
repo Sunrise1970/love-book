@@ -71,7 +71,7 @@
 import tabs from '@/components/common/LoveTabs.vue'
 import LoveHeader from '@/components/common/LoveHeader.vue'
 import { mapGetters } from 'vuex'
-// import BMap from 'BMap'
+import BMap from 'BMap'
 export default {
   name: 'home',
   components: {
@@ -91,13 +91,6 @@ export default {
       loading: true
     }
   },
-  // watch: {
-  //   keyWord: function (val) {
-  //     if (!val) {
-  //       this.showSearch = false
-  //     }
-  //   }
-  // },
   computed: {
     ...mapGetters({
       refleshHome: 'refleshHome'
@@ -134,31 +127,25 @@ export default {
     next()
   },
   mounted () {
+    var that = this
+    var geolocation = new BMap.Geolocation()
+    // 浏览器定位
+    geolocation.getCurrentPosition(function (r) {
+      if (r) {
+        that.longitude = r.point.lng
+        that.latitude = r.point.lat
+        that.initData('init')
+      } else {
+        // ip定位
+        var myCity = new BMap.LocalCity()
+        myCity.get((result) => {
+          that.longitude = result.center.lng || ''
+          that.latitude = result.center.lat || ''
+          that.initData('init')
+        })
+      }
+    })
     this.initData('init')
-    // var that = this
-    // var geolocation = new BMap.Geolocation()
-    // // 浏览器定位
-    // geolocation.getCurrentPosition(function (r) {
-    //   console.log('r:', r)
-    //   if (r) {
-    //     that.longitude = r.point.lng
-    //     that.latitude = r.point.lat
-    //     console.log('that.latitude', that.latitude)
-    //     that.initData('init')
-    //   } else {
-    //     // ip定位
-    //     var myCity = new BMap.LocalCity()
-    //     myCity.get((result) => {
-    //       that.longitude = result.center.lng || ''
-    //       that.latitude = result.center.lat || ''
-    //       that.initData('init')
-    //       console.log('result:', result)
-    //     })
-    //   }
-    // })
-    // this.initData('init')
-    console.log('this.longitude', this.longitude)
-    console.log('this.latitude', this.latitude)
   },
   methods: {
     toChart (userId, nickName) {
@@ -175,7 +162,6 @@ export default {
       this.initData('reflesh')
     },
     onScrollEnd (val) {
-      console.log(val)
       if (val.y < 0) {
         this.showSearchWrap = false
       } else {
@@ -244,10 +230,6 @@ export default {
           }
           this.$refs.scroll && this.$refs.scroll.forceUpdate()
         })
-    },
-    // 关键字搜索
-    onSearch () {
-      console.log('this.keyword', this.keyword)
     },
     // 刷新页面
     onPullingDown () {

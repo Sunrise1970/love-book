@@ -76,15 +76,11 @@ export default {
         .then((res) => {
           this.$router.back()
         })
-        .catch((error) => {
-          console.log('error', error)
-        })
     },
     showMutiPicker () {
       this.addressPicker.show()
     },
     selectHandle (selectedVal, selectedIndex, selectedText) {
-      console.log(selectedVal, selectedIndex, selectedText)
       this.city = selectedText[1]
     }
   }

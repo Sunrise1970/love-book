@@ -58,16 +58,12 @@ export default {
   mounted () {
     this.$axios.get('/love-around/user/query-self')
       .then((res) => {
-        console.log('res', res)
         if (res.data.userSex === '1') {
           this.suerSexType = 'man'
         } else {
           this.suerSexType = 'woman'
         }
         this.loading = false
-      })
-      .catch((error) => {
-        console.log('error', error)
       })
   },
   methods: {
@@ -87,9 +83,6 @@ export default {
           this.$router.push({
             name: 'Home'
           })
-        })
-        .catch((error) => {
-          console.log('error', error)
         })
     },
     changeValue (userHead) {

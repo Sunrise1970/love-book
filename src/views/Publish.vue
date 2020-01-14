@@ -39,7 +39,6 @@ export default {
   },
   mounted () {
     this.$axios.get('/love-around/love/query-not-chain').then(resData => {
-      console.log('resData', resData)
       this.loveContent = resData.data.loveContent
       this.id = resData.data.id
     })
@@ -47,12 +46,10 @@ export default {
     var geolocation = new BMap.Geolocation()
     // 浏览器定位
     geolocation.getCurrentPosition(function (r) {
-      console.log('r:', r)
       if (r) {
         that.longitude = r.point.lng
         that.latitude = r.point.lat
         that.address = r.address.province + r.address.city + r.address.district + r.address.street
-        console.log('that.latitude', that.latitude)
       } else {
         // ip定位
         var myCity = new BMap.LocalCity()
@@ -60,7 +57,6 @@ export default {
           that.longitude = result.center.lng || ''
           that.latitude = result.center.lat || ''
           that.address = result.name
-          console.log('result:', result)
         })
       }
     })
@@ -99,7 +95,6 @@ export default {
         address: this.address,
         id: this.id
       }).then(resData => {
-        console.log('resData', resData)
         this.$store.dispatch('setHomeReflesh', true)
         this.$createToast({
           time: 1500,

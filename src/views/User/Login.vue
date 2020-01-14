@@ -69,8 +69,6 @@ export default {
         params: {
           mobile: this.mobile
         }
-      }).then(resData => {
-        console.log('resData', resData)
       })
     },
     onBack () {
@@ -107,7 +105,6 @@ export default {
         verifyCode: this.code || '123456'
       })
         .then((res) => {
-          console.log('res', res)
           this.$axios.defaults.headers.token = res.data.token
           Cookie.set('token', res.data.token)
           // 老用户1，新用户2，测试环境先用1

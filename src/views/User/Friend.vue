@@ -32,11 +32,7 @@ export default {
       }
     })
       .then((res) => {
-        console.log('res', res)
         this.userInfo = res.data
-      })
-      .catch((error) => {
-        console.log('error', error)
       })
   },
   methods: {

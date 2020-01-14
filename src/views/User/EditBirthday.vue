@@ -54,9 +54,6 @@ export default {
         .then((res) => {
           this.$router.back()
         })
-        .catch((error) => {
-          console.log('error', error)
-        })
     },
     changeValue () {
       // 创建和改变日期

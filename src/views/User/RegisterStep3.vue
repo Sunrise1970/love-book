@@ -43,9 +43,6 @@ export default {
             name: 'RegisterStep4'
           })
         })
-        .catch((error) => {
-          console.log('error', error)
-        })
     }
   }
 }

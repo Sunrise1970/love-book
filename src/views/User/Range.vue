@@ -58,9 +58,6 @@ export default {
   methods: {
     toChangeSex (sex) {
       this.currentSex = sex
-    },
-    onChange () {
-      console.log('value', this.value)
     }
   }
 }

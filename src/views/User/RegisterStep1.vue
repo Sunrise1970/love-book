@@ -60,9 +60,6 @@ export default {
             name: 'RegisterStep2'
           })
         })
-        .catch((error) => {
-          console.log('error', error)
-        })
     },
     toChangeSex (sex) {
       this.currentSex = sex
