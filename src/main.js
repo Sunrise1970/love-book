@@ -1,7 +1,6 @@
 import 'amfe-flexible'
 import Vue from 'vue'
 import './cube-ui'
-import './vant-ui'
 import App from './App.vue'
 import router from './router'
 import store from './store'

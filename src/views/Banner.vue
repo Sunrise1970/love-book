@@ -1,7 +1,6 @@
 <template>
   <div class="love-banner">
     轮播图
-    <img alt="Vue logo" src="../assets/logo.png">
   </div>
 </template>
 

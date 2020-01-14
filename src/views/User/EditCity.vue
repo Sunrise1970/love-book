@@ -18,9 +18,6 @@
         >{{city || '请选择'}}</div>
         <span class="enter-icon"></span>
       </div>
-      <div
-        class="nomal-btn"
-        @click="nextStep">下一步</div>
     </div>
   </div>
 </template>
