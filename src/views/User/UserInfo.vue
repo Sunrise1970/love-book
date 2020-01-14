@@ -13,7 +13,7 @@
     </router-link>
     <router-link
       tag="div"
-      to="Range"
+      to="EditSign"
       class="flex-row row-center-left border-b love-enter"
       active-class="active">
       <span class="user-icon user-sign-icon"></span>
@@ -23,7 +23,7 @@
     </router-link>
     <router-link
       tag="div"
-      to="Introduction"
+      to="EditJod"
       class="flex-row row-center-left border-b love-enter"
       active-class="active">
       <span class="user-icon user-jod-icon"></span>
@@ -33,7 +33,7 @@
     </router-link>
     <router-link
       tag="div"
-      to="Introduction"
+      to="EditIntro"
       class="flex-row row-center-left border-b love-enter"
       active-class="active">
       <span class="user-icon user-person-icon"></span>
@@ -41,9 +41,7 @@
       <span class="enter-text ellipse">{{userInfo.introduction}}</span>
       <span class="enter-icon"></span>
     </router-link>
-    <router-link
-      tag="div"
-      to="Introduction"
+    <div
       class="flex-row row-center-left border-b love-enter"
       active-class="active">
       <span class="user-icon user-sex-icon"></span>
@@ -53,10 +51,10 @@
           :class="[userInfo.userSex === '1' ? 'setting-man-icon' : 'setting-woman-icon']"></span>
           {{userInfo.userSex === '1' ? '男' : '女'}}
         </div>
-    </router-link>
+    </div>
     <router-link
       tag="div"
-      to="Introduction"
+      to="EditCity"
       class="flex-row row-center-left border-b love-enter"
       active-class="active">
       <span class="user-icon user-city-icon"></span>
@@ -66,7 +64,7 @@
     </router-link>
     <router-link
       tag="div"
-      to="Introduction"
+      to="EditBirthday"
       class="flex-row row-center-left border-b love-enter"
       active-class="active">
       <span class="user-icon user-birthday-icon"></span>

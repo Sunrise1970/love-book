@@ -170,8 +170,8 @@ export default {
   font-size 16px
 .chart-content-left
   position relative
-  width 250px
-  padding 13px 11px
+  max-width 250px
+  padding 11px
   border 1px solid rgba(229, 229, 229, 1)
   border-radius:4px;
   color rgba(20, 20, 20, 1)
@@ -189,8 +189,8 @@ export default {
     transform rotate(-45deg)
     background-color #ffffff
 .chart-content-right
-  width 250px
-  padding 13px 11px
+  max-width 250px
+  padding 11px
   border-radius:4px;
   font-size 14px
   line-height 160%

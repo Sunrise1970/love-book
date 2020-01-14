@@ -1,8 +1,8 @@
 <template>
   <div class="love-page">
     <love-header title="选择头像"></love-header>
-    <div class="flex-column h-full center">
-      <div class="w-full">
+    <div class="flex-column h-full t-center center">
+      <div class="w-full" v-show="!loading">
         <div class="flex-row span1 row-b row-space-between t-center head-wrap">
           <div
             @click="changeValue('1')">
@@ -51,7 +51,8 @@ export default {
   data () {
     return {
       userHead: '',
-      suerSexType: 'man'
+      suerSexType: '',
+      loading: true
     }
   },
   mounted () {
@@ -63,6 +64,7 @@ export default {
         } else {
           this.suerSexType = 'woman'
         }
+        this.loading = false
       })
       .catch((error) => {
         console.log('error', error)

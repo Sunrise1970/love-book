@@ -1,20 +1,25 @@
 <template>
     <div class="love-page">
-      <love-header title="登录"></love-header>
-      <div class="login-wrap">
-        <div class="flex-row border-b login-input">
-          <span class="icon-tel"></span>
+      <love-header></love-header>
+      <div class="login-wrap t-center">
+        <img class="love-logo" src="../../assets/images/love-logo.png" />
+        <p class="love-desc">在情书，遇到对的</p>
+        <div class="flex-row row-center-left border-b login-input">
+          <span class="tel-icon"></span>
           <input class="span1" v-model="mobile" placeholder="输入11位手机号码" />
         </div>
-        <div class="flex-row border-b login-input">
-          <span class="icon-code"></span>
+        <div class="flex-row row-center-left border-b login-input">
+          <span class="code-icon"></span>
           <input class="span1" v-model="code" placeholder="短信验证码" />
           <love-timer
             :mobile="mobile"
             @resentMsg="sentMobileMsg"></love-timer>
         </div>
         <div
-          class="nomal-btn mt-30"
+          class="nomal-btn mt-60"
+          :class="{
+            'nomal-empty-btn': btnEmpty
+          }"
           @click="nextStep">一键登录/注册</div>
       </div>
     </div>
@@ -33,6 +38,11 @@ export default {
     return {
       mobile: '',
       code: ''
+    }
+  },
+  computed: {
+    btnEmpty () {
+      return !this.mobile && !this.code
     }
   },
   methods: {
@@ -119,8 +129,31 @@ export default {
   padding-left 30px
   padding-right 30px
 .login-input
-  height 40px
-  line-height 40px
   font-size 14px
-  margin-top 30px
+  margin-top 40px
+  padding-bottom 11px
+.love-logo
+  margin-top 50px
+  width 66px
+  height 66px
+.love-desc
+  color rgba(20, 20, 20, 1)
+  font-size 16px
+  padding-top 30px
+  padding-bottom 20px
+  letter-spacing 8px
+.tel-icon
+  display inline-block
+  width 18px
+  height 21px
+  background-image url('../../assets/images/login-uid-icon.png')
+  background-size 100%
+  margin-right 13px
+.code-icon
+  display inline-block
+  width 18px
+  height 21px
+  background-image url('../../assets/images/login-code-icon.png')
+  background-size 100%
+  margin-right 13px
 </style>

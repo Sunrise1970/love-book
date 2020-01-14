@@ -1,9 +1,9 @@
 <template>
   <div class="love-page">
     <love-header title="输入昵称"></love-header>
-    <div class="flex-column h-full center">
-      <div class="flex-row border-b nickname-input">
-        <span class="icon-tel"></span>
+    <div class="t-center">
+      <div class="flex-row row-center-left border-b nickname-input">
+        <span class="user-icon user-nick-icon"></span>
         <input class="span1" v-model="nickName" placeholder="请输入昵称" />
       </div>
       <div
@@ -52,9 +52,15 @@ export default {
 </script>
 <style lang="stylus" scoped>
 .nickname-input
-  width 260px
-  height 40px
-  line-height 40px
   font-size 14px
-  margin-top 30px
+  padding-top 18px
+  padding-bottom 18px
+  padding-left 16px
+  padding-right 16px
+  .span1
+    padding-left 18px
+.user-nick-icon
+  background-image url('../../assets/images/user-nick-icon.png')
+.nomal-btn
+  margin-top 186px
 </style>

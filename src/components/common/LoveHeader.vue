@@ -1,5 +1,5 @@
 <template>
-  <div class="flex-row center header border-b">
+  <div class="flex-row center header">
     <div
       v-if="needBack && !leftText"
       class="iconfont back-icon-wrap"

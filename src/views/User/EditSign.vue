@@ -1,12 +1,12 @@
 <template>
   <div class="love-page">
     <love-header
-      title="修改昵称"
+      title="修改个性签名"
       rightText="完成"
       @toNextPage="toNextPage"></love-header>
-    <div class="flex-row row-center-left border-b nickname-input">
-      <span class="user-icon user-nick-icon"></span>
-      <input class="span1" v-model="nickName" placeholder="请输入昵称" />
+    <div class="flex-row row-center-left nickname-input">
+      <span class="user-icon user-sign-icon"></span>
+      <textarea class="textarea span1" v-model="signature" placeholder="请输入个性签名" />
     </div>
   </div>
 </template>
@@ -21,7 +21,7 @@ export default {
   },
   data () {
     return {
-      nickName: ''
+      signature: ''
     }
   },
   computed: {
@@ -30,20 +30,20 @@ export default {
     })
   },
   mounted () {
-    this.nickName = this.userInfo.nickName
+    this.signature = this.userInfo.signature
   },
   methods: {
     toNextPage () {
-      if (this.nickName === '') {
-        this.$createToast({
-          time: 1500,
-          type: 'txt',
-          txt: '请输入昵称！'
-        }).show()
-        return
-      }
+      // if (this.signature === '') {
+      //   this.$createToast({
+      //     time: 1500,
+      //     type: 'txt',
+      //     txt: '请输入个性签名！'
+      //   }).show()
+      //   return
+      // }
       this.$axios.post('/love-around/user/modify', {
-        nickName: this.nickName
+        signature: this.signature
       })
         .then((res) => {
           this.$router.back()

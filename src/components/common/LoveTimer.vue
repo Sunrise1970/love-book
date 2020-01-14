@@ -34,7 +34,7 @@ export default {
       this.st = setInterval(() => {
         if (this.time > 1) {
           this.time--
-          this.codeText = '重新发送(' + this.time + 's)'
+          this.codeText = this.time + 's'
         } else {
           this.color = 're-sent'
           this.time = 0
@@ -105,15 +105,24 @@ export default {
 }
 </script>
 <style lang="stylus" scoped>
-  .code-text {
-    font-size 14px
-    color rgba(53, 133, 255, 1)
-    cursor pointer
-  }
-  .code-gray {
-    color: #c3c3c3;
-  }
-  .re-sent {
-    color rgba(53, 133, 255, 1)
-  }
+.code-text
+  position relative
+  font-size 14px
+  color rgba(19, 68, 65, 1)
+  cursor pointer
+  width 95px
+  &:before
+    position absolute
+    top 7px
+    left 0px
+    content ''
+    height 24px
+    width 1px
+    background-color rgba(229, 229, 229, 1)
+.code-gray {
+  color: #c3c3c3;
+}
+.re-sent {
+  color rgba(19, 68, 65, 1)
+}
 </style>

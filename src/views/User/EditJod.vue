@@ -1,12 +1,12 @@
 <template>
   <div class="love-page">
     <love-header
-      title="修改昵称"
+      title="修改工作"
       rightText="完成"
       @toNextPage="toNextPage"></love-header>
     <div class="flex-row row-center-left border-b nickname-input">
-      <span class="user-icon user-nick-icon"></span>
-      <input class="span1" v-model="nickName" placeholder="请输入昵称" />
+      <span class="user-icon user-jod-icon"></span>
+      <input class="span1" v-model="profession" placeholder="请输入工作" />
     </div>
   </div>
 </template>
@@ -21,7 +21,7 @@ export default {
   },
   data () {
     return {
-      nickName: ''
+      profession: ''
     }
   },
   computed: {
@@ -30,20 +30,20 @@ export default {
     })
   },
   mounted () {
-    this.nickName = this.userInfo.nickName
+    this.profession = this.userInfo.profession
   },
   methods: {
     toNextPage () {
-      if (this.nickName === '') {
-        this.$createToast({
-          time: 1500,
-          type: 'txt',
-          txt: '请输入昵称！'
-        }).show()
-        return
-      }
+      // if (this.profession === '') {
+      //   this.$createToast({
+      //     time: 1500,
+      //     type: 'txt',
+      //     txt: '请输入工作！'
+      //   }).show()
+      //   return
+      // }
       this.$axios.post('/love-around/user/modify', {
-        nickName: this.nickName
+        profession: this.profession
       })
         .then((res) => {
           this.$router.back()

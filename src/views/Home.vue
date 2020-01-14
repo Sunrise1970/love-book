@@ -32,15 +32,17 @@
         @pulling-up="onPullingUp"
         @scroll="onScrollEnd">
         <div
-          :key="key" v-for="(item, key) in dataList"
-          @click="toLetter(item.userId)">
+          :key="key" v-for="(item, key) in dataList">
           <div class="home-item border-b">
             <div class="flex-row">
-              <div :class="['home-img', item.picName]"></div>
+              <div
+                :class="['home-img', item.picName]"
+                @click="toUserInfo(item.userId)"></div>
               <div class="span1">
                 <div class="flex-row row-space-between">
-                  <span class="home-title">{{item.nickName}}</span>
-                  <span class="message-icon"></span>
+                  <span class="home-title"
+                  @click="toUserInfo(item.userId)">{{item.nickName}}</span>
+                  <span class="message-icon" @click="toChart(item.userId, item.nickName)"></span>
                 </div>
                 <div class="flex-row row-center-left home-desc">
                   <span class="location-icon"></span>
@@ -159,6 +161,15 @@ export default {
     console.log('this.latitude', this.latitude)
   },
   methods: {
+    toChart (userId, nickName) {
+      this.$router.push({
+        name: 'Chart',
+        query: {
+          userId: userId,
+          nickName: nickName
+        }
+      })
+    },
     onInput () {
       this.page = 1
       this.initData('reflesh')
@@ -180,9 +191,9 @@ export default {
         this.$refs.inputs.focus()
       })
     },
-    toLetter (userId) {
+    toUserInfo (userId) {
       this.$router.push({
-        name: 'Letter',
+        name: 'Friend',
         query: {
           userId: userId
         }

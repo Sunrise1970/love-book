@@ -1,6 +1,10 @@
 <template>
   <div class="love-page">
-    <love-header title="选择生日"></love-header>
+    <love-header
+      title="修改生日"
+      rightText="完成"
+      @toNextPage="nextStep"
+    ></love-header>
     <div class="t-center">
       <div
         class="flex-row row-center-left border-b love-enter"
@@ -14,9 +18,6 @@
         >{{birthday || '请选择'}}</div>
         <span class="enter-icon"></span>
       </div>
-      <div
-        class="nomal-btn"
-        @click="nextStep">下一步</div>
     </div>
   </div>
 </template>
@@ -24,6 +25,7 @@
 <script>
 // import dayjs from 'dayjs'
 import LoveHeader from '@/components/common/LoveHeader.vue'
+import { mapGetters } from 'vuex'
 export default {
   name: 'RegisterStep2',
   components: {
@@ -36,15 +38,21 @@ export default {
       datePicker: ''
     }
   },
+  computed: {
+    ...mapGetters({
+      userInfo: 'userInfo'
+    })
+  },
+  mounted () {
+    this.birthday = this.userInfo.birthday
+  },
   methods: {
     nextStep () {
       this.$axios.post('/love-around/user/modify', {
         birthday: this.birthday
       })
         .then((res) => {
-          this.$router.push({
-            name: 'RegisterStep3'
-          })
+          this.$router.back()
         })
         .catch((error) => {
           console.log('error', error)

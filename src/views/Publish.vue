@@ -1,7 +1,6 @@
 <template>
   <div class="love-page">
     <love-header
-      title="张三"
       leftText="取消"
       rightText="发布"
       :rightTextActive="rightTextAcitve"

@@ -98,6 +98,36 @@ const routes = [
     path: '/editNickName',
     name: 'EditNickName',
     component: () => import('../views/User/EditNickName.vue')
+  },
+  {
+    path: '/editBirthday',
+    name: 'EditBirthday',
+    component: () => import('../views/User/EditBirthday.vue')
+  },
+  {
+    path: '/editCity',
+    name: 'EditCity',
+    component: () => import('../views/User/EditCity.vue')
+  },
+  {
+    path: '/editIntro',
+    name: 'EditIntro',
+    component: () => import('../views/User/EditIntro.vue')
+  },
+  {
+    path: '/editJod',
+    name: 'EditJod',
+    component: () => import('../views/User/EditJod.vue')
+  },
+  {
+    path: '/editSign',
+    name: 'EditSign',
+    component: () => import('../views/User/EditSign.vue')
+  },
+  {
+    path: '/friend',
+    name: 'Friend',
+    component: () => import('../views/User/Friend.vue')
   }
 ]
 
